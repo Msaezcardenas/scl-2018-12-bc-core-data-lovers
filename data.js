@@ -1,5 +1,4 @@
 
-
 function sortData(data, sortBy, sortOrder){
   let arr = [];
   let value = Object.values(data)[0];
