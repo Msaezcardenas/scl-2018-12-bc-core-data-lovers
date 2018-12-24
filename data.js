@@ -6,14 +6,14 @@ function sortData(data, sortBy, sortOrder){
     arr.push(value[i]);
   }
   /* se utiliza metodo sort() aprendido aquí https://www.w3schools.com/js/js_array_sort.asp para números y strings */
-  /* lo siguiente ordena según valor numérico, dividiendose en ascendente y descendente */
+  /* lo siguiente ordena según valor numérico, dividiendose en ascendente(true) y descendente(false) */
   if (typeof arr[0][sortBy] === "number") {
     if (sortOrder === true){
       return arr.sort(function(a, b){return a[sortBy] - b[sortBy]});
     } else if (sortOrder == false){
       return arr.sort(function(a, b){return b[sortBy] - a[sortBy]});
     } 
-  /* lo siguiente ordena según valor string, dividiendose en ascendente y descendente */
+  /* lo siguiente ordena según valor string, dividiendose en ascendente(true) y descendente(false) */
   } else if (typeof arr[0][sortBy] === "string") {    
     if (sortOrder === true){
       return arr.sort(function(a, b){ 
