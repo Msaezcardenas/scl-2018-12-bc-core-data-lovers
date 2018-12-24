@@ -12,15 +12,19 @@ link del método https://www.w3schools.com/jsref/met_table_insertrow.asp */
         const cell3 = row.insertCell(2);
         const cell4 = row.insertCell(3);
         const cell5 = row.insertCell(4);
+        const cell6 = row.insertCell(5);
+        const cell7 = row.insertCell(6);
         cell1.innerHTML = arr[i]["id"];
         cell2.innerHTML = arr[i]["name"];
         cell3.innerHTML = '<img src="'+arr[i]["img"]+'"/>';     
         cell4.innerHTML = arr[i]["spawn_chance"];
-        cell5.innerHTML = arr[i]["height"];
+        cell5.innerHTML = arr[i]["weight"];
+        cell6.innerHTML = arr[i]["height"];
+        cell7.innerHTML = arr[i]["BMI"];
     }
 }
 
-arrayToTable(POKEMON["pokemon"], table1); 
+arrayToTable(bmiInData(POKEMON), table1); 
 /* con esta sentencia se pide el despliegue de la tabla con toda la data */  
  
 const table2 = document.getElementById("myTable"); 
@@ -39,8 +43,8 @@ function displaySorting(sortBy){
         } else {
             sortOrder = false;
         }
-        let sortedData = sortData(POKEMON, sortBy, sortOrder);
-        for (let i = POKEMON["pokemon"].length - 1; i >= 0; i--){
+        let sortedData = sortData(bmiInData(POKEMON), sortBy, sortOrder);
+        for (let i = bmiInData(POKEMON).length - 1; i >= 0; i--){
             table1.deleteRow(i); //borra linea por linea la tabla original
         }  
         return arrayToTable(sortedData, table2);               
@@ -48,7 +52,7 @@ function displaySorting(sortBy){
 }
 
 /* llama a displaySorting con todos los posibles valores de sortBy.*/
-const arrProperties = ["id", "name", "spawn_chance", "height"];
+const arrProperties = ["id", "name", "spawn_chance", "weight", "height", "BMI"];
 for (let i = 0; i< arrProperties.length; i++){
     displaySorting(arrProperties[i]);
 }
