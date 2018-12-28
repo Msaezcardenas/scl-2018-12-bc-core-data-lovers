@@ -9,6 +9,24 @@ function bmiInData(data){
 }
 
 
+window.example = example;
+
+const filterType = (data, condition) => {
+  let storeTypes = [];
+  for (let i = 0; i < data.length; i++){
+    for (let j=0; j< data[i]["type"].length; j++){
+    if (data[i].type[j] === condition){
+      storeTypes.push(data[i]);
+    }
+    }   
+  }
+  return storeTypes;
+};
+
+const resultFilterType = filterType(resultType);
+
+
+
 function sortData(data, sortBy, sortOrder){
   /* se utiliza metodo sort() aprendido aquí https://www.w3schools.com/js/js_array_sort.asp para números y strings */
   /* lo siguiente ordena según valor numérico, dividiendose en ascendente(true) y descendente(false) */
@@ -47,3 +65,4 @@ function sortData(data, sortBy, sortOrder){
     }  
   }
 } 
+
