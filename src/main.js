@@ -5,7 +5,7 @@ aquí se conecta su espaacio con el html */
 function arrayToTable(arr, table){
 /* se define función para hacer tablas con los parametros indicados dentro de la tabla
 link del método https://www.w3schools.com/jsref/met_table_insertrow.asp */
-    for (let i = arr.length - 1; i >= 0; i--){    
+    for (let i = arr.length-1; i >= 0; i--){    
         const row = table.insertRow(0);
         const cell1 = row.insertCell(0);
         const cell2 = row.insertCell(1);
@@ -24,7 +24,7 @@ link del método https://www.w3schools.com/jsref/met_table_insertrow.asp */
     }
 }
 
-arrayToTable(bmiInData(POKEMON), table1); 
+arrayToTable(processData.bmiInData(POKEMON), table1); 
 /* con esta sentencia se pide el despliegue de la tabla con toda la data */  
  
 const table2 = document.getElementById("myTable"); 
@@ -38,13 +38,14 @@ function displaySorting(sortBy){
     numero par de veces: orden descendente */
     document.getElementById(sortBy).addEventListener("click", function(){
         clicker += 1;
+        let sortOrder;
         if (clicker%2 !== 0){
             sortOrder = true;
         } else {
             sortOrder = false;
         }
-        let sortedData = sortData(bmiInData(POKEMON), sortBy, sortOrder);
-        for (let i = bmiInData(POKEMON).length - 1; i >= 0; i--){
+        let sortedData = processData.sortData(processData.bmiInData(POKEMON), sortBy, sortOrder);
+        for (let i = processData.bmiInData(POKEMON).length-1; i >= 0; i--){
             table1.deleteRow(i); //borra linea por linea la tabla original
         }  
         return arrayToTable(sortedData, table2);               

@@ -1,34 +1,30 @@
-function bmiInData(data){
-  let arrModified = Object.values(data)[0];
-  for (let i = 0; i < arrModified.length; i++){
+
+window.processData = {
+  bmiInData: (data) => {  
+    let arrModified = Object.values(data)[0];
+    for (let i = 0; i < arrModified.length; i++){
       arrModified[i].weight = parseFloat(arrModified[i].weight);
       arrModified[i].height = parseFloat(arrModified[i].height);
       arrModified[i].BMI = parseFloat((arrModified[i].weight/(arrModified[i].height ** 2)).toFixed(2));
-  }
-  return arrModified;
-}
-
-
-window.example = example;
-
-const filterType = (data, condition) => {
-  let storeTypes = [];
-  for (let i = 0; i < data.length; i++){
-    for (let j=0; j< data[i]["type"].length; j++){
-    if (data[i].type[j] === condition){
-      storeTypes.push(data[i]);
     }
-    }   
-  }
-  return storeTypes;
-};
+    return arrModified;
+  },
 
-const resultFilterType = filterType(resultType);
+  filterData: (data, condition) => {  
+    let storeTypes = [];
+    for (let i = 0; i < data.length; i++){
+      for (let j=0; j < data[i]["type"].length; j++){
+      if (data[i].type[j] === condition){
+        storeTypes.push(data[i]);
+      }
+      }   
+    }
+    return storeTypes;
+  },
 
 
-
-function sortData(data, sortBy, sortOrder){
-  /* se utiliza metodo sort() aprendido aquí https://www.w3schools.com/js/js_array_sort.asp para números y strings */
+  sortData: (data, sortBy, sortOrder) => { 
+    /* se utiliza metodo sort() aprendido aquí https://www.w3schools.com/js/js_array_sort.asp para números y strings */
   /* lo siguiente ordena según valor numérico, dividiendose en ascendente(true) y descendente(false) */
   if (typeof data[0][sortBy] === "number") {
     if (sortOrder === true){
@@ -40,8 +36,8 @@ function sortData(data, sortBy, sortOrder){
   } else if (typeof data[0][sortBy] === "string") {    
     if (sortOrder === true){
       return data.sort(function(a, b){ 
-        var x = a[sortBy].toLowerCase();
-        var y = b[sortBy].toLowerCase();       
+        let x = a[sortBy].toLowerCase();
+        let y = b[sortBy].toLowerCase();       
         if (x < y) {
           return -1;
         } if (x > y) {
@@ -52,8 +48,8 @@ function sortData(data, sortBy, sortOrder){
       });
     } else if (sortOrder == false){
       return data.sort(function(a, b){ 
-        var x = a[sortBy].toLowerCase();
-        var y = b[sortBy].toLowerCase();       
+        let x = a[sortBy].toLowerCase();
+        let y = b[sortBy].toLowerCase();       
         if (x < y) {
           return 1;
         } if (x > y) {
@@ -64,5 +60,5 @@ function sortData(data, sortBy, sortOrder){
       }); 
     }  
   }
-} 
-
+  }
+}
