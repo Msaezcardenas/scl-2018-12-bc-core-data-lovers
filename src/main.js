@@ -16,7 +16,7 @@ link del método https://www.w3schools.com/jsref/met_table_insertrow.asp */
         const cell7 = row.insertCell(6);
         cell1.innerHTML = arr[i]["id"];
         cell2.innerHTML = arr[i]["name"];
-        cell3.innerHTML = '<img src="'+arr[i]["img"]+'"/>';     
+        cell3.innerHTML = '<img id="img" src="'+arr[i]["img"]+'"/>';     
         cell4.innerHTML = arr[i]["spawn_chance"];
         cell5.innerHTML = arr[i]["weight"];
         cell6.innerHTML = arr[i]["height"];
