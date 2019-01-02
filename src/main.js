@@ -32,40 +32,25 @@ arrayToTable(modifiedData, table);
 /* con esta sentencia se pide el despliegue de la tabla con toda la data */  
  
 const arrProperties = ["id", "name", "spawn_chance", "weight", "height", "BMI"];
-
-/* function displaySorting(sortBy){    
-    document.getElementById(sortBy).addEventListener("click", function(){
-        let sortOrder;
-        let sortedData = processData.sortData(modifiedData, sortBy, sortOrder);       
-        if (document.getElementById(sortBy).style.background === "white"){
-            for (let i = 0; i< arrProperties.length; i++){        
-                document.getElementById(arrProperties[i]).style.background = "white";
-            }
-            document.getElementById(sortBy).style.background = "lightgrey";
-            table.innerHTML = "";
-            sortOrder = true;
-            return arrayToTable(sortedData, table);  
-        } else {
-            document.getElementById(sortBy).style.background = "lightgrey";
-            table.innerHTML = "";
-            sortOrder = false;
-            return arrayToTable(sortedData, table);  
-        }               
-    })  
-} */
-
 const arrTypes = ["Fire", "Grass", "Ice"];
 
 for (let i = 0; i< arrTypes.length; i++){        
     document.getElementById(arrTypes[i]).style.background = "white";
 }
 
+for (let i = 0; i< arrProperties.length; i++){        
+    document.getElementById(arrProperties[i]).style.background = "white";
+}
+
 function displayFilter(condition){
     const filteredData = window.processData.filterData(modifiedData, condition);
     document.getElementById(condition).addEventListener("click", function(){ 
-        if (document.getElementById(condition).style.background === "white"){
+        if ( document.getElementById(condition).style.background === "white"){
             for (let i = 0; i< arrTypes.length; i++){        
                 document.getElementById(arrTypes[i]).style.background = "white";
+            }
+            for (let i = 0; i< arrProperties.length; i++){        
+                document.getElementById(arrProperties[i]).style.background = "white";
             }
             document.getElementById(condition).style.background = "lightgrey";
             table.innerHTML = "";
@@ -78,41 +63,25 @@ function displayFilter(condition){
     })      
 } 
 
-function displaySorting(sortBy){
-    let clicker = 0; 
+function displaySorting(sortBy){    
     document.getElementById(sortBy).addEventListener("click", function(){
-        clicker += 1;
-        let sortOrder;
-        if (clicker%2 !== 0){
-            sortOrder = true;
-        } else {
+        let sortOrder = true;
+        if (document.getElementById(sortBy).style.background === "white" || 
+        document.getElementById(sortBy).style.background === "lightgreen"){
+            table.innerHTML = "";
+            for (let i = 0; i< arrProperties.length; i++){        
+                document.getElementById(arrProperties[i]).style.background = "white";
+            }
+            document.getElementById(sortBy).style.background = "lightblue";            
+            return arrayToTable(window.processData.sortData(modifiedData, sortBy, sortOrder), table);
+        } else if (document.getElementById(sortBy).style.background === "lightblue") {
+            document.getElementById(sortBy).style.background = "lightgreen";
+            table.innerHTML = "";
             sortOrder = false;
-        }
-        let sortedData = window.processData.sortData(modifiedData, sortBy, sortOrder);
-        table.innerHTML = "";
-        return arrayToTable(sortedData, table);              
+            return arrayToTable(window.processData.sortData(modifiedData, sortBy, sortOrder), table);              
+        }                  
     })  
 }
-
-/* function displayFilter(condition){
-    let clicker = 0;
-    const filteredData = processData.filterData(modifiedData, condition);
-    document.getElementById(condition).addEventListener("click", function(){ 
-        clicker += 1;
-        if (clicker%2 !== 0){
-            for (let i = 0; i< arrTypes.length; i++){        
-                document.getElementById(arrTypes[i]).style.background = "white";
-            }
-            document.getElementById(condition).style.background = "lightgrey";
-            table.innerHTML = "";
-            return arrayToTable(filteredData, table);  
-        } else {
-            document.getElementById(condition).style.background = "white";
-            table.innerHTML = "";
-            return arrayToTable(modifiedData, table);  
-        }                  
-    })      
-} */
 
 function iterate(display, arr){
     for (let i = 0; i< arr.length; i++){        
@@ -122,5 +91,3 @@ function iterate(display, arr){
 
 iterate(displaySorting, arrProperties);
 iterate(displayFilter, arrTypes);
-
-
