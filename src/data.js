@@ -5,7 +5,7 @@ window.processData = {
     for (let i = 0; i < arrModified.length; i++){
       arrModified[i].weight = parseFloat(arrModified[i].weight);
       arrModified[i].height = parseFloat(arrModified[i].height);
-      arrModified[i].BMI = parseFloat((arrModified[i].weight/(arrModified[i].height ** 2)).toFixed(2));
+      arrModified[i].BMI = parseFloat((arrModified[i].weight/(arrModified[i].height * arrModified[i].height)).toFixed(2));
     }
     return arrModified;
   },
@@ -21,7 +21,6 @@ window.processData = {
     }
     return storeTypes;
   },
-
 
   sortData: (data, sortBy, sortOrder) => { 
     /* se utiliza metodo sort() aprendido aquí https://www.w3schools.com/js/js_array_sort.asp para números y strings */

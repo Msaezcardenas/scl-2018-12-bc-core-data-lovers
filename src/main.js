@@ -1,4 +1,4 @@
-const table1 = document.getElementById("myTable"); 
+let table = document.getElementById("myTable"); 
 /* table1 es la tabla inicial que despliega toda la Data, 
 aquí se conecta su espaacio con el html */
 
@@ -14,28 +14,72 @@ link del método https://www.w3schools.com/jsref/met_table_insertrow.asp */
         const cell5 = row.insertCell(4);
         const cell6 = row.insertCell(5);
         const cell7 = row.insertCell(6);
+        const cell8 = row.insertCell(7);
         cell1.innerHTML = arr[i]["id"];
         cell2.innerHTML = arr[i]["name"];
-        cell3.innerHTML = '<img id="img" src="'+arr[i]["img"]+'"/>';     
-        cell4.innerHTML = arr[i]["spawn_chance"];
-        cell5.innerHTML = arr[i]["weight"];
-        cell6.innerHTML = arr[i]["height"];
-        cell7.innerHTML = arr[i]["BMI"];
+        cell3.innerHTML = '<img id="img" src="'+arr[i]["img"]+'"/>'; 
+        cell4.innerHTML = arr[i]["type"];
+        cell5.innerHTML = arr[i]["spawn_chance"];
+        cell6.innerHTML = arr[i]["weight"];
+        cell7.innerHTML = arr[i]["height"];
+        cell8.innerHTML = arr[i]["BMI"];
     }
 }
 
-arrayToTable(processData.bmiInData(POKEMON), table1); 
+let modifiedData = window.processData.bmiInData(window.POKEMON);
+
+arrayToTable(modifiedData, table); 
 /* con esta sentencia se pide el despliegue de la tabla con toda la data */  
  
-const table2 = document.getElementById("myTable"); 
-/* se declara la tabla que reemplazara a la tabla original al apretar los botones
-que tomará la misma posición de la tabla original en myTable */
+const arrProperties = ["id", "name", "spawn_chance", "weight", "height", "BMI"];
+
+/* function displaySorting(sortBy){    
+    document.getElementById(sortBy).addEventListener("click", function(){
+        let sortOrder;
+        let sortedData = processData.sortData(modifiedData, sortBy, sortOrder);       
+        if (document.getElementById(sortBy).style.background === "white"){
+            for (let i = 0; i< arrProperties.length; i++){        
+                document.getElementById(arrProperties[i]).style.background = "white";
+            }
+            document.getElementById(sortBy).style.background = "lightgrey";
+            table.innerHTML = "";
+            sortOrder = true;
+            return arrayToTable(sortedData, table);  
+        } else {
+            document.getElementById(sortBy).style.background = "lightgrey";
+            table.innerHTML = "";
+            sortOrder = false;
+            return arrayToTable(sortedData, table);  
+        }               
+    })  
+} */
+
+const arrTypes = ["Fire", "Grass", "Ice"];
+
+for (let i = 0; i< arrTypes.length; i++){        
+    document.getElementById(arrTypes[i]).style.background = "white";
+}
+
+function displayFilter(condition){
+    const filteredData = window.processData.filterData(modifiedData, condition);
+    document.getElementById(condition).addEventListener("click", function(){ 
+        if (document.getElementById(condition).style.background === "white"){
+            for (let i = 0; i< arrTypes.length; i++){        
+                document.getElementById(arrTypes[i]).style.background = "white";
+            }
+            document.getElementById(condition).style.background = "lightgrey";
+            table.innerHTML = "";
+            return arrayToTable(filteredData, table);  
+        } else {
+            document.getElementById(condition).style.background = "white";
+            table.innerHTML = "";
+            return arrayToTable(modifiedData, table);  
+        }                  
+    })      
+} 
 
 function displaySorting(sortBy){
-/* función para desplegar la data ordenada segun el boton apretado */ 
     let clicker = 0; 
-    /* si se cliquea numero impar de veces, orden es ascendente, 
-    numero par de veces: orden descendente */
     document.getElementById(sortBy).addEventListener("click", function(){
         clicker += 1;
         let sortOrder;
@@ -44,16 +88,39 @@ function displaySorting(sortBy){
         } else {
             sortOrder = false;
         }
-        let sortedData = processData.sortData(processData.bmiInData(POKEMON), sortBy, sortOrder);
-        for (let i = processData.bmiInData(POKEMON).length-1; i >= 0; i--){
-            table1.deleteRow(i); //borra linea por linea la tabla original
-        }  
-        return arrayToTable(sortedData, table2);               
+        let sortedData = window.processData.sortData(modifiedData, sortBy, sortOrder);
+        table.innerHTML = "";
+        return arrayToTable(sortedData, table);              
     })  
 }
 
-/* llama a displaySorting con todos los posibles valores de sortBy.*/
-const arrProperties = ["id", "name", "spawn_chance", "weight", "height", "BMI"];
-for (let i = 0; i< arrProperties.length; i++){
-    displaySorting(arrProperties[i]);
+/* function displayFilter(condition){
+    let clicker = 0;
+    const filteredData = processData.filterData(modifiedData, condition);
+    document.getElementById(condition).addEventListener("click", function(){ 
+        clicker += 1;
+        if (clicker%2 !== 0){
+            for (let i = 0; i< arrTypes.length; i++){        
+                document.getElementById(arrTypes[i]).style.background = "white";
+            }
+            document.getElementById(condition).style.background = "lightgrey";
+            table.innerHTML = "";
+            return arrayToTable(filteredData, table);  
+        } else {
+            document.getElementById(condition).style.background = "white";
+            table.innerHTML = "";
+            return arrayToTable(modifiedData, table);  
+        }                  
+    })      
+} */
+
+function iterate(display, arr){
+    for (let i = 0; i< arr.length; i++){        
+        display(arr[i]);
+    }
 }
+
+iterate(displaySorting, arrProperties);
+iterate(displayFilter, arrTypes);
+
+
