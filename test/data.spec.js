@@ -16,22 +16,22 @@ let spaceship = {
       {      
       name: 'Lily',
       degree: 'Computer Engineering',
-      country: 'Chile'
+      "type": ["Chile", "Brasil"]
       },
       {
       name: 'Dan',
       degree: 'Aerospace Engineering', 
-      country: 'Brasil'
+      "type": ["Mexico", "Chile"]
       },
       {
       name: 'Clementine',
       degree: 'Physics',
-      country: 'Brasil'
+      "type": ['Brasil', "Mexico"]
        },
       {
       name: 'Shauna',
       degree: 'Conservation Science',
-      country: 'Chile'
+      "type": ["Mexico", "Brazil", 'Chile']
       }
     ]
 };
