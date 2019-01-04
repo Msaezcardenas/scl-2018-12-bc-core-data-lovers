@@ -1,20 +1,5 @@
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-  
-thead, tbody {
-    border: 1px solid #dddddd;
-    text-align: center;
-    padding: 8px;
-}
-  
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-
-#img {
-    height: 70px;
-    width: auto;
-}
+.jumbotron {
+    background: #0328DE;
+    color: #ffffff;
+    padding: 40px 0;
+    }

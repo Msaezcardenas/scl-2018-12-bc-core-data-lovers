@@ -1,0 +1,12 @@
+.jumbotron {
+background: #0328DE;
+color: #ffffff;
+padding: 40px 0;
+}
+
+
+@media(min-width: 543px) and (max-width: 768px){
+    .col {
+        padding-right: 0px;
+    }
+}
