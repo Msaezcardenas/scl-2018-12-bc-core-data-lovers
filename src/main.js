@@ -32,7 +32,7 @@ arrayToTable(modifiedData, table);
 /* con esta sentencia se pide el despliegue de la tabla con toda la data */  
  
 const arrProperties = ["id", "name", "spawn_chance", "weight", "height", "BMI"];
-const arrTypes = ["Fire", "Grass", "Ice"];
+const arrTypes = ["Fire", "Dark", "Dragon", "Electric", "Fairy", "Fighting", "Bug", "Flying", "Ghost","Grass", "Ground", "Ice", "Normal", "Poison", "Psychic", "Rock", "Steel", "Water"];
 
 function refreshButtons(buttonArray){
     for (let i = 0; i< buttonArray.length; i++){        
