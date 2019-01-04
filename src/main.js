@@ -26,7 +26,6 @@ link del método https://www.w3schools.com/jsref/met_table_insertrow.asp */
     }
 }
 
-
 let modifiedData = window.processData.bmiInData(window.POKEMON);
 
 arrayToTable(modifiedData, table); 
@@ -63,6 +62,7 @@ function displaySorting(sortBy,objectArray){
             return arrayToTable(window.processData.sortData(objectArray, sortBy, sortOrder), table);            
         } else {
             counter += 1 
+            refreshButtons(arrProperties);
             sortButton.background = "lightgreen";
             table.innerHTML = "";
             sortOrder = false;            
@@ -70,42 +70,6 @@ function displaySorting(sortBy,objectArray){
         }                  
     })  
 }
-
-//pruebas con console log y counter
-/* function displaySorting(sortBy,objectArray){
-    const sortButton = document.getElementById(sortBy).style;  
-    let counter = 0;  
-    document.getElementById(sortBy).addEventListener("click", function(){
-        console.log(sortBy);
-        let sortOrder = true;
-        if (sortButton.background === "yellow" || sortButton.background === "lightgreen"){
-            console.log(sortButton.background);
-            table.innerHTML = "";
-            refreshButtons(arrProperties); 
-            sortButton.background = "lightblue"; 
-            console.log(sortButton.background);  
-            counter += 1  
-            console.log(counter);      
-            return arrayToTable(window.processData.sortData(objectArray, sortBy, sortOrder), table);            
-        } else if (sortButton.background === "lightblue") {
-            counter += 1 
-            console.log(counter);
-            if (counter % 2 == 0){
-                sortButton.background = "lightblue";
-                return arrayToTable(window.processData.sortData(objectArray, sortBy, sortOrder), table);
-            } else {
-            console.log(sortButton.background);
-            sortButton.background = "lightgreen";
-            console.log(sortButton.background);
-            table.innerHTML = "";
-            sortOrder = false;
-            console.log(sortButton.background);
-            
-            return arrayToTable(window.processData.sortData(objectArray, sortBy, sortOrder), table);    
-            }          
-        }                  
-    })  
-} */
 
 function displayFilter(condition,objectArray){
     const filteredData = window.processData.filterData(objectArray, condition);
@@ -130,89 +94,3 @@ function displayFilter(condition,objectArray){
 
 iterate(displaySorting, arrProperties, modifiedData);
 iterate(displayFilter, arrTypes, modifiedData);
-
-
-//funciona ordenado dentro de filtrado bastante bien pero no perfecto
-/* function displaySorting(sortBy,objectArray){
-    const sortButton = document.getElementById(sortBy).style;    
-    document.getElementById(sortBy).addEventListener("click", function(){
-        let sortOrder = true;
-        if (sortButton.background === "yellow" || sortButton.background === "lightgreen"){
-            table.innerHTML = "";
-            refreshButtons(arrProperties);
-            sortButton.background = "lightblue";            
-            return arrayToTable(window.processData.sortData(objectArray, sortBy, sortOrder), table);
-        } else if (sortButton.background === "lightblue") {
-            sortButton.background = "lightgreen";
-            table.innerHTML = "";
-            sortOrder = false;
-            return arrayToTable(window.processData.sortData(objectArray, sortBy, sortOrder), table);              
-        }                  
-    })  
-}
-
-function displayFilter(condition,objectArray){
-    const filteredData = window.processData.filterData(objectArray, condition);
-    const filterButton = document.getElementById(condition).style;
-    document.getElementById(condition).addEventListener("click", function(){ 
-        if (filterButton.background === "yellow"){
-            refreshButtons(arrTypes);
-            refreshButtons(arrProperties);            
-            filterButton.background = "lightgrey";            
-            table.innerHTML = "";  
-            iterate(displaySorting, arrProperties, filteredData);          
-            return arrayToTable(filteredData, table);                                     
-        } else {
-            filterButton.background = "yellow";
-            table.innerHTML = "";
-            refreshButtons(arrProperties);
-            iterate(displaySorting, arrProperties, modifiedData);
-            return arrayToTable(modifiedData, table); 
-        }                  
-    })      
-} 
-
-iterate(displaySorting, arrProperties, modifiedData);
-iterate(displayFilter, arrTypes, modifiedData);  */
-
-
-
-
-
-//de aqui par abajo funcionaba bien (sin ordenado dentro de filtrado)
-
-/* function displayFilter(condition){
-    const filteredData = window.processData.filterData(modifiedData, condition);
-    const filterButton = document.getElementById(condition).style;
-    document.getElementById(condition).addEventListener("click", function(){ 
-        if ( filterButton.background === "white"){
-            refreshButtons(arrTypes);
-            refreshButtons(arrProperties);
-            filterButton.background = "lightgrey";
-            table.innerHTML = "";
-            return arrayToTable(filteredData, table);  
-        } else {
-            filterButton.background = "white";
-            table.innerHTML = "";
-            return arrayToTable(modifiedData, table);  
-        }                  
-    })      
-} 
-
-function displaySorting(sortBy){
-    const sortButton = document.getElementById(sortBy).style;    
-    document.getElementById(sortBy).addEventListener("click", function(){
-        let sortOrder = true;
-        if (sortButton.background === "white" || sortButton.background === "lightgreen"){
-            table.innerHTML = "";
-            refreshButtons(arrProperties);
-            sortButton.background = "lightblue";            
-            return arrayToTable(window.processData.sortData(modifiedData, sortBy, sortOrder), table);
-        } else if (sortButton.background === "lightblue") {
-            sortButton.background = "lightgreen";
-            table.innerHTML = "";
-            sortOrder = false;
-            return arrayToTable(window.processData.sortData(modifiedData, sortBy, sortOrder), table);              
-        }                  
-    })  
-} */
