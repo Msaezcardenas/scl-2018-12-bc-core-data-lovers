@@ -11,49 +11,40 @@ describe('example', () => {
   });
 }); */
 
-let spaceship = {
-  crew: [
-      {      
-      name: 'Lily',
-      degree: 'Computer Engineering',
-      "type": ["Chile", "Brasil"]
-      },
-      {
-      name: 'Dan',
-      degree: 'Aerospace Engineering', 
-      "type": ["Mexico", "Chile"]
-      },
-      {
-      name: 'Clementine',
-      degree: 'Physics',
-      "type": ['Brasil', "Mexico"]
-       },
-      {
-      name: 'Shauna',
-      degree: 'Conservation Science',
-      "type": ["Mexico", "Brazil", 'Chile']
-      }
-    ]
-};
-
-
 describe('processData', () => {
+  it('is an object', () => {
+    expect(typeof window.processData).toBe('object');
+  });
+
+  it('is a function', () => {
+    expect(typeof window.processData).toBe('function');
+  });
+
+  /* it('returns `example`', () => {
+    expect(example()).toBe('example');
+  }); */
+}); 
+
+
+
+
+/* describe('processData', () => {
 
   it('debería ser un objeto', () => {
-    assert.equal(typeof processData, 'object');
+    window.assert.equal(typeof window.processData, 'object');
   });
 
   describe('processData.filterData', () => {
 
     it('debería ser una función', () => {
-      assert.equal(typeof processData.filterData, 'function');
+      window.assert.equal(typeof window.processData.filterData, 'function');
     });
 
     it('debería retornar "arreglo de objetos que contengan Chile" para "spaceship con condición Chile', () => {
-      assert.equal(processData.filterData(spaceship, 'Chile'), [{name: 'Lily', degree: 'Computer Engineering', 
+      window.assert.equal(window.processData.filterData(spaceship, 'Chile'), [{name: 'Lily', degree: 'Computer Engineering', 
       country: 'Chile'},{name: 'Shauna', degree: 'Conservation Science', country: 'Chile'}]
       );
-    });
+    }); */
 
     /* it('debería retornar "hijklmnopqrstuvwxyzabcdefg" para "abcdefghijklmnopqrstuvwxyz" con offest 33', () => {
       assert.equal(cipher.encode(33, "abcdefghijklmnopqrstuvwxyz"), "hijklmnopqrstuvwxyzabcdefg");
@@ -79,7 +70,7 @@ describe('processData', () => {
       assert.equal(cipher.encode(33, "!@#%&/()=?[]+{}<>;,:.-¿¡"), "!@#%&/()=?[]+{}<>;,:.-¿¡");
     });
  */
-  });
+ /*  }); */
 
   /* describe('cipher.decode', () => {
 
@@ -105,4 +96,4 @@ describe('processData', () => {
 
   }); */
 
-});
+/* }); */

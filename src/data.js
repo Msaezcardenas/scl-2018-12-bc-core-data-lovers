@@ -1,6 +1,4 @@
 
-
-
 window.processData = {
   bmiInData: (data) => {  
     let arrModified = Object.values(data)[0];
