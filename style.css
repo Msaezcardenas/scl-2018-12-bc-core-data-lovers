@@ -3,10 +3,18 @@
     color: #ffffff;
     padding: 40px 0;
     }
+
+/* thead, tbody {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
     
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
     
-    @media(min-width: 543px) and (max-width: 768px){
-        .col {
-            padding-right: 0px;
-        }
-    }
+#img {
+    height: 50px;
+    width: auto;
+} */
