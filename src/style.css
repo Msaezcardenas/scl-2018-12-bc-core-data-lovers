@@ -4,17 +4,39 @@
     padding: 40px 0;
     }
 
-/* thead, tbody {
+thead, tbody {
     border: 1px solid #dddddd;
     text-align: center;
     padding: 8px;
 }
     
-tr:nth-child(even) {
+/* tr:nth-child(even) {
     background-color: #dddddd;
-}
+} */
     
 #img {
-    height: 50px;
+    height: 60px;
     width: auto;
+}
+
+strong {
+    font-size: 14px;
+}
+
+/* .table {
+    table-layout: auto;
+    width: auto; 
+} */
+
+/* .container {
+    height: 50px;
+} */
+
+/* .col_boton{
+    border:black solid;  
+    border-width: 50px;
+}  */
+
+/* .boton_img{ 
+    text-align: center;
 } */
