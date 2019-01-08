@@ -45,10 +45,6 @@ link del método https://www.w3schools.com/jsref/met_table_insertrow.asp */
     cell8.innerHTML = window.processData.average(arr)[2];
 }
 
-
-
-
-
 /* se declara variable que guarda arreglo de objetos pokemon incorporando a cada pokemon un IMC, 
 segun la función de BMI en data.js */
 let modifiedData = window.processData.bmiInData(window.POKEMON);
