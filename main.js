@@ -5,6 +5,7 @@ aquí se conecta su espacio con el html */
 function arrayToTable(arr, table){
 /* se define función para hacer tablas con los parametros indicados dentro de la tabla
 link del método https://www.w3schools.com/jsref/met_table_insertrow.asp */
+    table.innerHTML = "";
     for (let i = arr.length-1; i >= 0; i--){  
         const row = table.insertRow(0);
         const cell1 = row.insertCell(0);
@@ -24,19 +25,6 @@ link del método https://www.w3schools.com/jsref/met_table_insertrow.asp */
         cell7.innerHTML = arr[i]["height"];
         cell8.innerHTML = arr[i]["BMI"];
     }
-}
-
-
-
-
-/* se declara variable que guarda arreglo de objetos pokemon incorporando a cada pokemon un IMC, 
-segun la función de BMI en data.js */
-let modifiedData = window.processData.bmiInData(window.POKEMON);
-
-
-let tableFoot = document.getElementById("tableFoot");
-
-function displayAverage(objectArray){  
     tableFoot.innerHTML = "";  
     const row = tableFoot.insertRow(0);
     const cell1 = row.insertCell(0);
@@ -52,10 +40,23 @@ function displayAverage(objectArray){
     cell3.innerHTML = "-"; 
     cell4.innerHTML = "-";
     cell5.innerHTML = "-";
-    cell6.innerHTML = window.processData.average(objectArray)[0];
-    cell7.innerHTML = window.processData.average(objectArray)[1];
-    cell8.innerHTML = window.processData.average(objectArray)[2];
+    cell6.innerHTML = window.processData.average(arr)[0];
+    cell7.innerHTML = window.processData.average(arr)[1];
+    cell8.innerHTML = window.processData.average(arr)[2];
 }
+
+
+
+
+
+/* se declara variable que guarda arreglo de objetos pokemon incorporando a cada pokemon un IMC, 
+segun la función de BMI en data.js */
+let modifiedData = window.processData.bmiInData(window.POKEMON);
+
+
+let tableFoot = document.getElementById("tableFoot");
+
+
 
 /* con esta sentencia se pide el despliegue de la tabla modificada con toda la data */  
 arrayToTable(modifiedData, table); 
@@ -93,19 +94,15 @@ function displaySorting(sortBy,objectArray){
     document.getElementById(sortBy).addEventListener("click", function(){ //si se apreta el botón que esta tomando el valor de "sortBy"...
         let sortOrder = true; //el orden por defecto es ascendente(true)
         if (counter % 2 === 0){ //si el contador es par
-            table.innerHTML = ""; //borrar tabla anterior
             refreshButtons(arrProperties); //refrescar botones
             sortButton.background = "lightblue"; //cambiar botones a color azul 
             counter += 1 // sumar 1 para que la siguiente vez que se aprete el boton ordene en forma descendente    
-            displayAverage(objectArray);  
             return arrayToTable(window.processData.sortData(objectArray, sortBy, sortOrder), table); //llama a sortData para que ordene la tabla segun el boton apretado en orden ascendente            
         } else { //si el contador es impar
             counter += 1 // sumar 1 para que la siguiente vez que se aprete el botón ordene en forma ascendente 
             refreshButtons(arrProperties);//refrescar botones
             sortButton.background = "lightgreen"; //cambiar botones a color verde 
-            table.innerHTML = ""; //borrar tabla anterior
-            sortOrder = false; //se reasigna sortOrder para que se realice orden descendente 
-            displayAverage(objectArray);         
+            sortOrder = false; //se reasigna sortOrder para que se realice orden descendente         
             return arrayToTable(window.processData.sortData(objectArray, sortBy, sortOrder), table); //llama a sortData para que se muestre la tabla ordenada segun el boton apretado en orden descendente                     
         }                  
     })  
@@ -119,16 +116,12 @@ function displayFilter(condition,objectArray){
         if (filterButton.background === "white"){ //si el botón es blanco         
             refreshButtons(arrTypes); //refrescar todos los botones de filtrado
             refreshButtons(arrProperties); //refrescar todos los botones de ordenado            
-            filterButton.background = "lightgrey"; //cambiar boton seleccionado a color gris           
-            table.innerHTML = ""; //borrar tabla anterior    
-            displayAverage(filteredData);          
+            filterButton.background = "lightgrey"; //cambiar boton seleccionado a color gris                      
             iterate(displaySorting, arrProperties, filteredData);//llamar a display sorting para que se pueda hacer ordenado dentro de filtrado, en caso que se aprete un boton de sorting mientras esté apretado un botón de filter                      
             return arrayToTable(filteredData, table);//mostrar la data filtrada segun el botón apretado                                     
         } else { //si el botón no es blanco (es gris)           
             filterButton.background = "white";//cambiar boton seleccionado a color blanco (representa descliqueado)            
-            table.innerHTML = "";//borrar tabla anterior
             refreshButtons(arrProperties);//refrescar todos los botones de ordenado
-            displayAverage(modifiedData); 
             iterate(displaySorting, arrProperties, modifiedData);//llamar a display sorting para que se pueda volver a ordenar la data original una vez descliqueado
             return arrayToTable(modifiedData, table);//mostrar la data no filtrada. 
         }                  
