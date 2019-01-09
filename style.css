@@ -1,19 +1,22 @@
-.jumbotron {
+header {
     background: #0328DE;
     color: #ffffff;
-    padding: 3px 0;
-    }
+    padding: 3% 0;
+}
 
-thead, tbody {
+#sect-tipo{
+    padding: 3% 0;
+}
+/* thead, tbody {
     border: 1px solid #dddddd;
     text-align: center;
     padding: 8px;
 }
-    
+*/
 /* tr:nth-child(even) {
     background-color: #dddddd;
 } */
-    
+
 #img {
     height: 60px;
     width: auto;
@@ -23,10 +26,30 @@ strong {
     font-size: 14px;
 }
 
-.table {
+.img_btn {
+    height: 60px;
+    width: 65px;
+}
+
+@media (max-width: 425px){ 
+    .btn {
+        height: 40px;
+        width: 70px;
+        font-size: 0;
+        line-height: 0;
+    }
+}
+
+@media (max-width: 425px){
+    .img_btn { 
+        display: none;
+    }
+}
+
+/* .table {
     table-layout: auto;
     width: auto; 
-}
+} */
 
 /* .container {
     height: 50px;
@@ -40,3 +63,13 @@ strong {
 /* .boton_img{ 
     text-align: center;
 } */
+
+/* @media (min-width: 320px){
+    .col { padding-right: 0 !important;
+    }
+}
+
+@media (min-width: 320px){
+    .col { columns: sm-12px;
+    }
+    
