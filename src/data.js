@@ -10,18 +10,6 @@ window.processData = {
     return arrModified;
   },
 
-  average: (data) => {  
-    let sumW = 0;
-    let sumH = 0;
-    let sumB = 0;
-    for (let i = 0; i < data.length; i++){
-      sumW += data[i].weight;
-      sumH += data[i].height;
-      sumB += data[i].BMI;
-    }    
-    return [(sumW/data.length).toFixed(2), (sumH/data.length).toFixed(2), (sumB/data.length).toFixed(2)];
-  },
-
   filterData: (data, condition) => {  
     let storeTypes = [];
     for (let i = 0; i < data.length; i++){
