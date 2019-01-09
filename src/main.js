@@ -2,6 +2,8 @@ let table = document.getElementById("myTable");
 /* table es la tabla inicial que despliega toda la Data, 
 aquí se conecta su espacio con el html */
 
+let tableFoot = document.getElementById("tableFoot");
+
 function arrayToTable(arr, table){
 /* se define función para hacer tablas con los parametros indicados dentro de la tabla
 link del método https://www.w3schools.com/jsref/met_table_insertrow.asp */
@@ -54,7 +56,7 @@ segun la función de BMI en data.js */
 let modifiedData = window.processData.bmiInData(window.POKEMON);
 
 
-let tableFoot = document.getElementById("tableFoot");
+
 
 
 

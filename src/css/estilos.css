@@ -5,8 +5,7 @@ padding: 40px 0;
 }
 
 
-@media(min-width: 543px) and (max-width: 768px){
-    .col {
-        padding-right: 0px;
+@media (min-width: 320px){
+    .col { padding-right: 0 !important;
     }
 }
