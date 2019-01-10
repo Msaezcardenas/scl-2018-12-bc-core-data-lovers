@@ -16,14 +16,12 @@ link del método https://www.w3schools.com/jsref/met_table_insertrow.asp */
         const cell4 = row.insertCell(3);
         const cell5 = row.insertCell(4);
         const cell6 = row.insertCell(5);
-        const cell7 = row.insertCell(6);
         cell1.innerHTML = arr[i]["id"];
         cell2.innerHTML = arr[i]["name"];
         cell3.innerHTML = '<img id="img" src="'+arr[i]["img"]+'"/>'; 
         cell4.innerHTML = arr[i]["type"];
         cell5.innerHTML = arr[i]["weaknesses"];
-        cell6.innerHTML = arr[i]["spawn_chance"];
-        cell7.innerHTML = arr[i]["spawn_time"];
+        cell6.innerHTML = arr[i]["spawn_time"];
     }
 }
 
@@ -37,7 +35,7 @@ arrayToTable(data, table);
 
 /* se declara arreglo con id de botones para ordenar, que son los mismos que tomaran el parámetro "condition" 
 en las funciones displayFilter(en main.js) y filterData(en data.js)*/
-const arrProperties = ["id", "name", "spawn_chance", "spawn_time"];
+const arrProperties = ["id", "name", "spawn_time"];
 
 /* se declara arreglo con id de botones para filtrar, que son los mismos que tomaran el parámetro "sortBy" 
 en las funciones displaySorting(en main.js) y sortData(en data.js)*/
@@ -57,6 +55,10 @@ function refreshButtons(buttonArray){
     }
 }
 
+document.getElementById("pokemon-go").addEventListener("click", function(){
+    location.reload();
+})
+
 /* se llama a refrescar los botones de ordenado y filtrado utilizando la función anterior*/
 refreshButtons(arrTypes);
 refreshButtons(arrProperties);
@@ -75,7 +77,7 @@ function displaySorting(sortBy,objectArray){
         } else { //si el contador es impar
             counter += 1 // sumar 1 para que la siguiente vez que se aprete el botón ordene en forma ascendente 
             refreshButtons(arrProperties);//refrescar botones
-            sortButton.background = "lightgreen"; //cambiar botones a color verde 
+            sortButton.background = "lightblue"; //cambiar botones a color verde 
             sortOrder = false; //se reasigna sortOrder para que se realice orden descendente         
             return arrayToTable(window.processData.sortData(objectArray, sortBy, sortOrder), table); //llama a sortData para que se muestre la tabla ordenada segun el boton apretado en orden descendente                     
         }                  
@@ -91,7 +93,7 @@ function displayFilter(condition,objectArray){
             refreshButtons(arrTypes); //refrescar todos los botones de filtrado
             refreshButtons(arrProperties); //refrescar todos los botones de ordenado            
             filterButton.background = "lightgrey"; //cambiar boton seleccionado a color gris 
-            percent.innerHTML = window.processData.percentageFilteredData(filteredData, data) + "% de los pokemones son de tipo " + condition;                      
+            percent.innerHTML = window.processData.percentageFilteredData(filteredData, data) + "% de los pokemones son de tipo " + condition + ".";                      
             iterate(displaySorting, arrProperties, filteredData);//llamar a display sorting para que se pueda hacer ordenado dentro de filtrado, en caso que se aprete un boton de sorting mientras esté apretado un botón de filter                      
             return arrayToTable(filteredData, table);//mostrar la data filtrada segun el botón apretado                                     
         } else { //si el botón no es blanco (es gris)           

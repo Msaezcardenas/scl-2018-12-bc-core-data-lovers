@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
 
-</head>
+</head>  
 
 <body>
   <header>
@@ -17,8 +17,8 @@
         <div class="col-8">
           <h1 class=""> Base de Datos </h1>
         </div>
-        <div class="col-4">
-          <img src="css/Imagenes proyecto pokemon/pokemonGo.png" width="120" height="auto">
+        <div id="pokemon-go" class="col-3">
+          <img src="css/Imagenes proyecto pokemon/pokemonGo.png" width="120" height="auto">             
         </div>
       </div>
     </div>
@@ -31,6 +31,7 @@
           <h2>Tipos de Pokemon</h2>
         </div>
       </div>
+
       <div class="row">
         <div class="col-8">
           <p>Selecciona uno de los botones a continuación para filtrar pokemones por tipo.</p>
@@ -98,14 +99,39 @@
           <button id="Water" type="button" class="btn btn-outline-primary"><img class="img_btn" src="css/Imagenes proyecto pokemon/water.png">
             <br> <strong>Water</strong> </button>
         </div>
-
       </div>
 
       <br><br>
 
       <p id = "percent">  </p>
 
+      <br>
+
     </div>
+    <div class="table-responsive">
+        <table class="table table-condensed table-bordered table-hover">
+          <thead class="thead-light">
+            <tr>
+  
+              <th scope="col"><input id="id" type="button" name="option" value="id ↑↓"></th>
+              <th scope="col"><input id="name" type="button" name="option" value="nombre ↑↓"></th>
+              <th scope="col">Imagen</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Debilidades</th>
+              <th scope="col"><input id="spawn_time" type="button" name="option" value="tiempo aparición ↑↓"></th>
+  
+            </tr>
+          </thead>
+          <tbody id="myTable">
+  
+  
+          </tbody>
+          <tfoot id="tableFoot">
+  
+          </tfoot>
+        </table>
+      </div>
+
   </section>
 
   
@@ -113,35 +139,11 @@
 
 
   <div class="container table">
-    <div class="table-responsive">
-      <table class="table table-condensed table-bordered table-hover">
-        <thead class="thead-light">
-          <tr>
-
-            <th scope="col"><input id="id" type="button" name="option" value="id"></th>
-            <th scope="col"><input id="name" type="button" name="option" value="nombre"></th>
-            <th scope="col">Imagen</th>
-            <th scope="col">Tipo</th>
-            <th scope="col">Debilidades</th>
-            <th scope="col"><input id="spawn_chance" type="button" name="option" value="probabilidad aparición"></th>
-            <th scope="col"><input id="spawn_time" type="button" name="option" value="tiempo aparición"></th>
-
-
-          </tr>
-        </thead>
-        <tbody id="myTable">
-
-
-        </tbody>
-        <tfoot id="tableFoot">
-
-        </tfoot>
-      </table>
-    </div>
+    
   </div>
 
-  <script src="js/jquery.js"> </script>
-  <script src="js/bootstrap.min.js"> </script>
+  <script href="js/jquery.js"> </script>
+  <script href="js/bootstrap.min.js"> </script>
   <script src="./data/pokemon/pokemon.js"></script>
 
   <script src="data.js"></script>
