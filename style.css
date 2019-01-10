@@ -46,10 +46,13 @@ strong {
     }
 }
 
-/* .table {
-    table-layout: auto;
+/* html {overflow-x: scroll;}
+
+.table {
+     table-layout: auto;
     width: auto; 
-} */
+    overflow-x: scroll;
+}  */
 
 /* .container {
     height: 50px;
