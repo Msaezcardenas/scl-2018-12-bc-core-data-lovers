@@ -2,7 +2,7 @@ let table = document.getElementById("myTable");
 /* table es la tabla inicial que despliega toda la Data, 
 aquí se conecta su espacio con el html */
 
-let tableFoot = document.getElementById("tableFoot");
+let percent = document.getElementById("percent");
 
 function arrayToTable(arr, table){
 /* se define función para hacer tablas con los parametros indicados dentro de la tabla
@@ -17,55 +17,27 @@ link del método https://www.w3schools.com/jsref/met_table_insertrow.asp */
         const cell5 = row.insertCell(4);
         const cell6 = row.insertCell(5);
         const cell7 = row.insertCell(6);
-        const cell8 = row.insertCell(7);
         cell1.innerHTML = arr[i]["id"];
         cell2.innerHTML = arr[i]["name"];
         cell3.innerHTML = '<img id="img" src="'+arr[i]["img"]+'"/>'; 
         cell4.innerHTML = arr[i]["type"];
-        cell5.innerHTML = arr[i]["spawn_chance"];
-        cell6.innerHTML = arr[i]["weight"];
-        cell7.innerHTML = arr[i]["height"];
-        cell8.innerHTML = arr[i]["BMI"];
+        cell5.innerHTML = arr[i]["weaknesses"];
+        cell6.innerHTML = arr[i]["spawn_chance"];
+        cell7.innerHTML = arr[i]["spawn_time"];
     }
-    tableFoot.innerHTML = "";  
-    const row = tableFoot.insertRow(0);
-    const cell1 = row.insertCell(0);
-    const cell2 = row.insertCell(1);
-    const cell3 = row.insertCell(2);
-    const cell4 = row.insertCell(3);
-    const cell5 = row.insertCell(4);
-    const cell6 = row.insertCell(5);
-    const cell7 = row.insertCell(6);
-    const cell8 = row.insertCell(7);
-    cell1.innerHTML = "Promedio";
-    cell2.innerHTML = "-";
-    cell3.innerHTML = "-"; 
-    cell4.innerHTML = "-";
-    cell5.innerHTML = "-";
-    cell6.innerHTML = window.processData.average(arr)[0];
-    cell7.innerHTML = window.processData.average(arr)[1];
-    cell8.innerHTML = window.processData.average(arr)[2];
 }
-
-
-
-
 
 /* se declara variable que guarda arreglo de objetos pokemon incorporando a cada pokemon un IMC, 
 segun la función de BMI en data.js */
-let modifiedData = window.processData.bmiInData(window.POKEMON);
-
-
-
-
+let data = (window.POKEMON).pokemon;
 
 
 /* con esta sentencia se pide el despliegue de la tabla modificada con toda la data */  
-arrayToTable(modifiedData, table); 
+arrayToTable(data, table); 
 
 /* se declara arreglo con id de botones para ordenar, que son los mismos que tomaran el parámetro "condition" 
 en las funciones displayFilter(en main.js) y filterData(en data.js)*/
-const arrProperties = ["id", "name", "spawn_chance", "weight", "height", "BMI"];
+const arrProperties = ["id", "name", "spawn_chance", "spawn_time"];
 
 /* se declara arreglo con id de botones para filtrar, que son los mismos que tomaran el parámetro "sortBy" 
 en las funciones displaySorting(en main.js) y sortData(en data.js)*/
@@ -118,17 +90,19 @@ function displayFilter(condition,objectArray){
         if (filterButton.background === "white"){ //si el botón es blanco         
             refreshButtons(arrTypes); //refrescar todos los botones de filtrado
             refreshButtons(arrProperties); //refrescar todos los botones de ordenado            
-            filterButton.background = "lightgrey"; //cambiar boton seleccionado a color gris                      
+            filterButton.background = "lightgrey"; //cambiar boton seleccionado a color gris 
+            percent.innerHTML = window.processData.percentageFilteredData(filteredData, data) + "% de los pokemones son de tipo " + condition;                      
             iterate(displaySorting, arrProperties, filteredData);//llamar a display sorting para que se pueda hacer ordenado dentro de filtrado, en caso que se aprete un boton de sorting mientras esté apretado un botón de filter                      
             return arrayToTable(filteredData, table);//mostrar la data filtrada segun el botón apretado                                     
         } else { //si el botón no es blanco (es gris)           
             filterButton.background = "white";//cambiar boton seleccionado a color blanco (representa descliqueado)            
             refreshButtons(arrProperties);//refrescar todos los botones de ordenado
-            iterate(displaySorting, arrProperties, modifiedData);//llamar a display sorting para que se pueda volver a ordenar la data original una vez descliqueado
-            return arrayToTable(modifiedData, table);//mostrar la data no filtrada. 
+            iterate(displaySorting, arrProperties, data);//llamar a display sorting para que se pueda volver a ordenar la data original una vez descliqueado
+            return arrayToTable(data, table);//mostrar la data no filtrada. 
         }                  
     })      
 } 
 
-iterate(displaySorting, arrProperties, modifiedData);//para pedir que se ejecute la función que llama a displaySorting con todos los posibles valores de sortBy(botones de ordenado)
-iterate(displayFilter, arrTypes, modifiedData); //para pedir que se ejecute la función que llama a displayFilter con todos los posibles valores de condition(botones de filtrado)
+iterate(displaySorting, arrProperties, data);//para pedir que se ejecute la función que llama a displaySorting con todos los posibles valores de sortBy(botones de ordenado)
+iterate(displayFilter, arrTypes, data); //para pedir que se ejecute la función que llama a displayFilter con todos los posibles valores de condition(botones de filtrado)
+ 
