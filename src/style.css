@@ -8,15 +8,6 @@ header {
 #sect-tipo{
     padding: 3% 0;
 }
-/* thead, tbody {
-    border: 1px solid #dddddd;
-    text-align: center;
-    padding: 8px;
-}
-*/
-/* tr:nth-child(even) {
-    background-color: #dddddd;
-} */
 
 #img {
     height: 60px;
@@ -42,13 +33,11 @@ strong {
     .img_btn { 
         display: none;
     }
-}
-
-/* @media (max-width: 425px){
-    .img_btn { 
-        display: none;
+    #pokemon-go {
+        width: 90px;
+        height: auto;
     }
-} */
+}
 
 .table {
     table-layout: auto;
@@ -57,46 +46,18 @@ strong {
     margin-right: auto; 
 }  
 
-/* #scrollarea-invalid {
-    overflow-y: scroll !important;
-    height: 350px;
-} */
-
-#pokemon-go{
-    margin-left: left;
-}
-
 .col-4{
     margin-bottom: 10px;
 }
 
-/* html {overflow-x: scroll;}
-
-.table {
-     table-layout: auto;
-    width: auto; 
-    overflow-x: scroll;
-}  */
-
-/* .container {
-    height: 50px;
-} */
-
-/* .col_boton{
-    border:black solid;  
-    border-width: 50px;
-}  */
-
-/* .boton_img{ 
+#percent{
+    display: none;
     text-align: center;
-} */
-
-/* @media (min-width: 320px){
-    .col { padding-right: 0 !important;
-    }
+    background: blue;
+    color: white;
+    height: 40px;
+    width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 8px;
 }
-
-@media (min-width: 320px){
-    .col { columns: sm-12px;
-    }
-    
