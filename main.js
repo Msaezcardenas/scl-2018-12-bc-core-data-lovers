@@ -31,7 +31,6 @@ link del método https://www.w3schools.com/jsref/met_table_insertrow.asp */
 /* se declara variable que guarda arreglo de objetos pokemon */
 let data = (window.POKEMON).pokemon;
 
-
 /* con esta sentencia se pide el despliegue de la tabla con toda la data */  
 arrayToTable(data, table); 
 
@@ -86,19 +85,19 @@ function displaySorting(sortBy,objectArray){
 function displayFilter(condition,objectArray){
     const filteredData = window.processData.filterData(objectArray, condition); 
     const filterButton = document.getElementById(condition).style; 
-    let percent = document.getElementById("percent");
+    let percent = document.getElementById("percent")
     document.getElementById(condition).addEventListener("click", function(){ 
         if (filterButton.background === "white"){          
             refreshButtons(arrTypes); 
             refreshButtons(arrProperties);             
             filterButton.background = "lightgrey"; 
-            percent.style.display = "block";
+            percent.style.display = "block"
             percent.innerHTML = window.processData.percentageFilteredData(filteredData, data) + "% de los pokemones son de tipo " + condition + ".";                      
             iterate(displaySorting, arrProperties, filteredData);                     
             return arrayToTable(filteredData, table);                                     
-        } else {   
-            percent.style.display = "none";       
-            filterButton.background = "white";           
+        } else {          
+            filterButton.background = "white";
+            percent.style.display = "none";         
             refreshButtons(arrProperties);
             iterate(displaySorting, arrProperties, data); 
             return arrayToTable(data, table);
@@ -107,5 +106,4 @@ function displayFilter(condition,objectArray){
 } 
 
 iterate(displaySorting, arrProperties, data);
-iterate(displayFilter, arrTypes, data); 
- 
+iterate(displayFilter, arrTypes, data);  
