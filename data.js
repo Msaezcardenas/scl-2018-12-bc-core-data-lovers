@@ -1,22 +1,6 @@
 
 window.processData = {
 
-  /* filterData: (data, condition) => {  
-    let storeTypes = [];
-    for (let i = 0; i < data.length; i++){
-      if (condition === data[i].egg){
-        storeTypes.push(data[i]);
-      } else {
-        for (let j=0; j < data[i]["type"].length; j++){
-          if (data[i].type[j] === condition){
-          storeTypes.push(data[i]);
-          }
-        } 
-      }        
-    }
-    return storeTypes;
-  }, */
-
   filterData: (data, condition) => {  
     let storeTypes = [];
     for (let i = 0; i < data.length; i++){
