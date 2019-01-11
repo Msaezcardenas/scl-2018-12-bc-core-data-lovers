@@ -1,4 +1,19 @@
-# Data Lovers
+# PokeData
+PokeData es una herramienta de ayuda para jugadores de Pokemon go. 
+Esta página web permite al usuario acceder de forma sencilla y rápida a información relevante acerca de pokemones, lo que le permite mejorar su experiencia de juego. 
+
+## Definición del Producto:
+1. Usuarios:
+Los usuarios de PokeData son principalmente hombres y mujeres, entre 18 y 29 años, jugadores de Pokemon Go. 
+
+2. ¿Cuales son los objetivos de los usuarios en relación al producto? 
+
+Encontrar información acerca de algún pokemon en especifico. 
+
+3. ¿Cómo se están resolviendo sus problemas? 
+Esta herramienta facilita la busqueda de algun pokemon en especifico, a través de herramientas como filtrar por tipo y ordenar, y presenta, información relevante, de forma ordenada y categorizada.
+
+
 
 ## Prototipo de Baja Fidelidad
 
