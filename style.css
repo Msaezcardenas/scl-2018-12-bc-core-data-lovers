@@ -37,6 +37,9 @@ strong {
         width: 90px;
         height: auto;
     }
+    .title{
+        font-size: 30px;
+    }
 }
 
 .table {
