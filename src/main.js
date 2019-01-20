@@ -21,11 +21,11 @@ link del método https://www.w3schools.com/jsref/met_table_insertrow.asp */
         const cell6 = row.insertCell(5);
         cell1.innerHTML = arr[i]["id"];
         cell2.innerHTML = arr[i]["name"];
-        cell3.innerHTML = '<img id="img" src="'+arr[i]["img"]+'"/>'; 
+        cell3.innerHTML = '<img id="img" class="cardPoke" src="'+arr[i]["img"]+'"/>'; 
         cell4.innerHTML = arr[i]["type"];
         cell5.innerHTML = arr[i]["weaknesses"];
         cell6.innerHTML = arr[i]["spawn_time"];
-    }
+    } 
 }
 
 /* se declara variable que guarda arreglo de objetos pokemon */
@@ -105,5 +105,27 @@ function displayFilter(condition,objectArray){
     })      
 } 
 
+/*document.getElementByClass("card").addEventListener("click", function(){
+    let pokeCard = document.getElementByClass("card");
+    
+});
+*/
 iterate(displaySorting, arrProperties, data);
 iterate(displayFilter, arrTypes, data);  
+
+const arrCardPoke = document.getElementsByClassName('cardPoke')
+  for (let i = 0; i< arrCardPoke.length; i++){   
+      document.getElementById("target").style.display="block";    
+     arrCardPoke[i].addEventListener('click',()=>{
+        document.getElementById('target').innerHTML=
+
+        `<div class="card">
+        <img class="card-img-top" id="img" src="${data[i].img}"/>
+        <div class="card-body" >
+         <h5>${data[i].name}</h5>
+         <p class="card-text"> ${data[i].type} </p>
+         <p class="card-text"> ${data[i].egg}</p>
+    
+        </div>`
+    })
+}
