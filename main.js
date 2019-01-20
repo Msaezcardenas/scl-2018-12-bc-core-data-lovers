@@ -14,24 +14,46 @@ function arrayToTable(arr, table){
 /* se define función para hacer tablas con los parametros indicados dentro de la tabla
 link del método https://www.w3schools.com/jsref/met_table_insertrow.asp */
     table.innerHTML = "";
-    for (let i = arr.length-1; i >= 0; i--){  
-        const row = table.insertRow(0);
-        const cell1 = row.insertCell(0);
-        const cell2 = row.insertCell(1);
-        const cell3 = row.insertCell(2);
-        const cell4 = row.insertCell(3);
-        const cell5 = row.insertCell(4);
-        const cell6 = row.insertCell(5);
-        cell1.innerHTML = arr[i]["id"];
-        cell2.innerHTML = arr[i]["name"];
-        cell3.innerHTML = '<img id="img" class="cardPoke" src="'+arr[i]["img"]+'"/>'; 
-        cell4.innerHTML = arr[i]["type"];
-        cell5.innerHTML = arr[i]["weaknesses"];
-        cell6.innerHTML = arr[i]["spawn_time"];
+        for (let i = arr.length-1; i >= 0; i--){  
+            const row = table.insertRow(0);
+            const cell1 = row.insertCell(0);
+            const cell2 = row.insertCell(1);
+            const cell3 = row.insertCell(2);
+            const cell4 = row.insertCell(3);
+            const cell5 = row.insertCell(4);
+            const cell6 = row.insertCell(5);
+            cell1.innerHTML = arr[i]["id"];
+            cell2.innerHTML = arr[i]["name"];
+            cell3.innerHTML = '<button type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal"> <img id="img" src="'+arr[i]["img"]+'"/></button>'; 
+            cell4.innerHTML = arr[i]["type"];
+            cell5.innerHTML = arr[i]["weaknesses"];
+            cell6.innerHTML = arr[i]["spawn_time"];
 
-        
-    } 
-}
+            document.getElementById("modal-result").innerHTML = 
+
+            `<div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">PokeDex</h4>
+                        <button type="button" class="close" data-dismiss="modal"> &times;</button>
+                    </div>
+                    <div class="modal-body">
+                    <img class="card-img-top" id="img" src="${data[i].img}"/>
+                     <h4>${data[i].name}</h4>
+                     <p class="card-text"> ${data[i].type} </p>
+                     <p class="card-text"> ${data[i].egg}</p>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>     
+            </div>
+        </div>`
+        }
+
+    }
 
 /* se declara variable que guarda arreglo de objetos pokemon */
 let data = (window.POKEMON).pokemon;
@@ -120,24 +142,24 @@ function displayFilter(condition,objectArray){
 iterate(displaySorting, arrProperties, data);
 iterate(displayFilter, arrTypes, data);  
 
+// const arrCardPoke = document.getElementsByClassName('cardPoke')
+//         for (let i = 0; i< arrCardPoke.length; i++){       
+//         arrCardPoke[i].addEventListener('click',()=>{
+//         document.getElementById("target").style.display="block";
+//         document.getElementById("tableComplete").style.display="none";
+//         document.getElementById('target').innerHTML=
 
-const arrCardPoke = document.getElementsByClassName('cardPoke')
-        for (let i = 0; i< arrCardPoke.length; i++){       
-        arrCardPoke[i].addEventListener('click',()=>{
-        document.getElementById("target").style.display="block";
-        document.getElementById("tableComplete").style.display="none";
-        document.getElementById('target').innerHTML=
-
-        `<div class="card">
-        <img class="card-img-top" id="img" src="${data[i].img}"/>
-        <div class="card-body" >
-         <h5>${data[i].name}</h5>
-         <p class="card-text"> ${data[i].type} </p>
-         <p class="card-text"> ${data[i].egg}</p>
+//         `<div class="card">
+//         <img class="card-img-top" id="img" src="${data[i].img}"/>
+//         <div class="card-body" >
+//          <h5>${data[i].name}</h5>
+//          <p class="card-text"> ${data[i].type} </p>
+//          <p class="card-text"> ${data[i].egg}</p>
     
-        </div>`
-    })
-}
+//         </div>`
+//     })
+// }
+
 
 // const arrCardPoke = document.getElementsByClassName('cardPoke')
 //         for (let i = 0; i< arrCardPoke.length; i++){       
