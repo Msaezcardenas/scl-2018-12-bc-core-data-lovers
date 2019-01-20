@@ -8,6 +8,9 @@ let table = document.getElementById("myTable");
 aquí se conecta su espacio con el html */
 
 function arrayToTable(arr, table){
+    document.getElementById("tableComplete").style.display="block";
+    document.getElementById("target").style.display="none";
+
 /* se define función para hacer tablas con los parametros indicados dentro de la tabla
 link del método https://www.w3schools.com/jsref/met_table_insertrow.asp */
     table.innerHTML = "";
@@ -25,6 +28,8 @@ link del método https://www.w3schools.com/jsref/met_table_insertrow.asp */
         cell4.innerHTML = arr[i]["type"];
         cell5.innerHTML = arr[i]["weaknesses"];
         cell6.innerHTML = arr[i]["spawn_time"];
+
+        
     } 
 }
 
@@ -59,6 +64,7 @@ function refreshButtons(buttonArray){
 /* se llama a refrescar los botones de ordenado y filtrado utilizando la función anterior*/
 refreshButtons(arrTypes);
 refreshButtons(arrProperties);
+
 
 /* función que llama a sortData.js(en data.js) cuando se apreten los botones de ordenado */
 function displaySorting(sortBy,objectArray){
@@ -102,7 +108,8 @@ function displayFilter(condition,objectArray){
             iterate(displaySorting, arrProperties, data); 
             return arrayToTable(data, table);
         }                  
-    })      
+    })   
+       
 } 
 
 /*document.getElementByClass("card").addEventListener("click", function(){
@@ -113,10 +120,12 @@ function displayFilter(condition,objectArray){
 iterate(displaySorting, arrProperties, data);
 iterate(displayFilter, arrTypes, data);  
 
+
 const arrCardPoke = document.getElementsByClassName('cardPoke')
-  for (let i = 0; i< arrCardPoke.length; i++){   
-      document.getElementById("target").style.display="block";    
-     arrCardPoke[i].addEventListener('click',()=>{
+        for (let i = 0; i< arrCardPoke.length; i++){       
+        arrCardPoke[i].addEventListener('click',()=>{
+        document.getElementById("target").style.display="block";
+        document.getElementById("tableComplete").style.display="none";
         document.getElementById('target').innerHTML=
 
         `<div class="card">
@@ -129,3 +138,21 @@ const arrCardPoke = document.getElementsByClassName('cardPoke')
         </div>`
     })
 }
+
+// const arrCardPoke = document.getElementsByClassName('cardPoke')
+//         for (let i = 0; i< arrCardPoke.length; i++){       
+//         arrCardPoke[i].addEventListener('click',()=>{
+//         document.getElementById("target").style.display="block";
+//         document.getElementById("tableComplete").style.display="none";
+//         document.getElementById('target').innerHTML=
+
+//         `<div class="card">
+//         <img class="card-img-top" id="img" src="${data[i].img}"/>
+//         <div class="card-body" >
+//          <h5>${data[i].name}</h5>
+//          <p class="card-text"> ${data[i].type} </p>
+//          <p class="card-text"> ${data[i].egg}</p>
+    
+//         </div>`
+//     })
+// }
