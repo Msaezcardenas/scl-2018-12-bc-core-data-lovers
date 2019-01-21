@@ -8,12 +8,7 @@ let table = document.getElementById("myTable");
 aquí se conecta su espacio con el html */
 
 function arrayToTable(arr, table){
-    document.getElementById("tableComplete").style.display="block";
-    document.getElementById("target").style.display="none";
-
-/* se define función para hacer tablas con los parametros indicados dentro de la tabla
-link del método https://www.w3schools.com/jsref/met_table_insertrow.asp */
-    table.innerHTML = "";
+        table.innerHTML = "";        
         for (let i = arr.length-1; i >= 0; i--){  
             const row = table.insertRow(0);
             const cell1 = row.insertCell(0);
@@ -24,35 +19,20 @@ link del método https://www.w3schools.com/jsref/met_table_insertrow.asp */
             const cell6 = row.insertCell(5);
             cell1.innerHTML = arr[i]["id"];
             cell2.innerHTML = arr[i]["name"];
-            cell3.innerHTML = '<button type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal"> <img id="img" src="'+arr[i]["img"]+'"/></button>'; 
+            cell3.innerHTML = '<button id="modal-button" type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal"><img class="imgModal" src="'+arr[i]["img"]+'"/></button>'; 
             cell4.innerHTML = arr[i]["type"];
             cell5.innerHTML = arr[i]["weaknesses"];
             cell6.innerHTML = arr[i]["spawn_time"];
-
-            document.getElementById("modal-result").innerHTML = 
-
-            `<div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">PokeDex</h4>
-                        <button type="button" class="close" data-dismiss="modal"> &times;</button>
-                    </div>
-                    <div class="modal-body">
-                    <img class="card-img-top" id="img" src="${data[i].img}"/>
-                     <h4>${data[i].name}</h4>
-                     <p class="card-text"> ${data[i].type} </p>
-                     <p class="card-text"> ${data[i].egg}</p>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>     
-            </div>
-        </div>`
+            document.getElementById("modal-button").addEventListener("click", function(){
+                document.getElementById("modal-result").innerHTML = 
+                `<img class="img" src="${arr[i]["img"]}">
+                <h5>${arr[i].name}</h5>
+                <p> Tipo : ${arr[i].type} </p>
+                <p> Distancia Huevo :  ${arr[i].egg}</p>
+                <p> Caramelos  : ${arr[i].candy_count}</p>
+                ` 
+            })                                            
         }
-
     }
 
 /* se declara variable que guarda arreglo de objetos pokemon */
@@ -86,7 +66,6 @@ function refreshButtons(buttonArray){
 /* se llama a refrescar los botones de ordenado y filtrado utilizando la función anterior*/
 refreshButtons(arrTypes);
 refreshButtons(arrProperties);
-
 
 /* función que llama a sortData.js(en data.js) cuando se apreten los botones de ordenado */
 function displaySorting(sortBy,objectArray){
@@ -130,8 +109,7 @@ function displayFilter(condition,objectArray){
             iterate(displaySorting, arrProperties, data); 
             return arrayToTable(data, table);
         }                  
-    })   
-       
+    })      
 } 
 
 /*document.getElementByClass("card").addEventListener("click", function(){
@@ -141,40 +119,3 @@ function displayFilter(condition,objectArray){
 */
 iterate(displaySorting, arrProperties, data);
 iterate(displayFilter, arrTypes, data);  
-
-// const arrCardPoke = document.getElementsByClassName('cardPoke')
-//         for (let i = 0; i< arrCardPoke.length; i++){       
-//         arrCardPoke[i].addEventListener('click',()=>{
-//         document.getElementById("target").style.display="block";
-//         document.getElementById("tableComplete").style.display="none";
-//         document.getElementById('target').innerHTML=
-
-//         `<div class="card">
-//         <img class="card-img-top" id="img" src="${data[i].img}"/>
-//         <div class="card-body" >
-//          <h5>${data[i].name}</h5>
-//          <p class="card-text"> ${data[i].type} </p>
-//          <p class="card-text"> ${data[i].egg}</p>
-    
-//         </div>`
-//     })
-// }
-
-
-// const arrCardPoke = document.getElementsByClassName('cardPoke')
-//         for (let i = 0; i< arrCardPoke.length; i++){       
-//         arrCardPoke[i].addEventListener('click',()=>{
-//         document.getElementById("target").style.display="block";
-//         document.getElementById("tableComplete").style.display="none";
-//         document.getElementById('target').innerHTML=
-
-//         `<div class="card">
-//         <img class="card-img-top" id="img" src="${data[i].img}"/>
-//         <div class="card-body" >
-//          <h5>${data[i].name}</h5>
-//          <p class="card-text"> ${data[i].type} </p>
-//          <p class="card-text"> ${data[i].egg}</p>
-    
-//         </div>`
-//     })
-// }
